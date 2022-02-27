@@ -12,31 +12,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.App {
-  font-family: sans-serif;
-  text-align: center;
-}
-
-.MovieCard {
-  border: 1px solid #555;
-}
-
-.MovieImage {
-  width: 100px;
-}
-
-.MovieTitle {
-  font-size: 16px;
-}
-
-.MovieTypeWrapper {
-  border: 1px solid red;
-  background: pink;
-  border-radius: 6px;
-}
-
-.MovieType {
-  color: red;
-  font-size: 14px;
-}
