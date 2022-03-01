@@ -1,19 +1,23 @@
 import './App.css';
-
+import React from 'react';
 import MovieCard from './MovieCard.js';
-import { movieData } from './Utils.js';
+import {searchResults, getMoviesBySearchTerm, movieData } from './Utils.js';
 
-const movie = "cars";
+// let searchInput = React.createRef();
+// console.log(searchInput);
+
+getMoviesBySearchTerm("cars");
 
 function App() {
 	return (
 		  <div className='App'>
         <label>
           Enter Search
-          <input type="text" name="searchInput" />
+          <input type="text" name="sInput" />
+          <button> Enter</button>
         </label>
-        <MovieCard 
-          title = {movieData.Title}
+        <MovieCard
+          title = {searchResults.Title}
           type = {movieData.Type}
           posterUrl = {movieData.Poster}
         />

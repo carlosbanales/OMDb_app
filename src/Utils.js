@@ -1,11 +1,25 @@
 import React from 'react';
 
-async function getMoviesBySearchTerm() {
-    let url = `https://www.omdbapi.com/?apikey=13d7c693&=${search}`;
+const searchInput = "cars";
+export let searchResults = {};
+
+export async function getMoviesBySearchTerm(search) {
+    let url = `https://www.omdbapi.com/?apikey=13d7c693&s=${search}`;
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data)
+    // const obj = JSON.parse(data);
+    searchResults = data.Search[0];
+    console.log(searchResults);
 }
+
+
+
+// async function getMoviesBySea() {
+//   let url = `https://www.omdbapi.com/?apikey=13d7c693&=${search}`;
+//   let response = await fetch(url);
+//   let data = await response.json();
+//   console.log(data)
+// }
 
 export const movieData = {
     Title: "The Avengers",
@@ -47,7 +61,7 @@ export const movieData = {
     BoxOffice: "$623,357,910",
     Production: "N/A",
     Website: "N/A",
-    Response: "True"
+    Response: "True",
   };
 
 // let url = `https://www.omdbapi.com/?apikey=13d7c693&t=${search}`;
