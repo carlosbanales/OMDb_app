@@ -2,13 +2,12 @@
 let searchResults = {};
 
 export async function getMoviesBySearchTerm(search) {
-  console.log(search)
+  //console.log(search)
     let url = `https://www.omdbapi.com/?apikey=13d7c693&s=${search}`;
     let response = await fetch(url);
     let data = await response.json();
     // const obj = JSON.parse(data);
     searchResults = data.Search;
-    console.log(data)
     console.log(searchResults);
     return (
       searchResults
