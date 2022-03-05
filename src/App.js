@@ -6,18 +6,19 @@ import { getMoviesBySearchTerm } from './Utils.js';
 function App() {
   const [searchInput, setSearchInput] = useState("");
   let searchR = getMoviesBySearchTerm(searchInput);
-  console.log(searchR);
+  searchR.then(result => (console.log(result))).catch(err => console.log(err));
 
 	return (
 	  <div className='App'>
-      <label>
+      <>
         Enter Search
+        {/* uncontrolled input, need to create a form component */}
         <input type="text"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button> Enter </button>
-      </label>
+      </>
       {searchR[0] && (
         <div>
           <MovieCard
