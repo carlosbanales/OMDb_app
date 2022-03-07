@@ -4,21 +4,34 @@ import MovieCard from './MovieCard.js';
 import { getMoviesBySearchTerm } from './Utils.js';
 
 function App() {
-  const [searchInput, setSearchInput] = useState("");
-  let searchR = getMoviesBySearchTerm(searchInput);
-  searchR.then(result => (console.log(result))).catch(err => console.log(err));
+  const [searchInput, setSearchInput] = useState('');
+  const [searchR, setsearchR] = useState([{}]);
+  console.log("searchInput: " + searchInput);
+  let promise = getMoviesBySearchTerm(searchInput);
+  
+  useEffect(() => {
+    getApiInfo();
+  }, []);
+
+  const getApiInfo = () => {
+    promise.then((result) => {
+      console.log("result:"+result);
+      setsearchR(result);
+    })
+  };
+
+  console.log("searchR: "+searchR);
 
 	return (
 	  <div className='App'>
-      <>
-        Enter Search
+         Enter Search
         {/* uncontrolled input, need to create a form component */}
         <input type="text"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button> Enter </button>
-      </>
+
       {searchR[0] && (
         <div>
           <MovieCard
@@ -43,3 +56,12 @@ function App() {
 };
 
 export default App;
+
+
+
+// promiseVar.then(result => {
+//   console.log(result);
+//   return result;
+// })
+// .catch(err => console.log(err)
+// );
