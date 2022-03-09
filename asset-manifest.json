@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/OMDb_app/static/css/main.541034a5.css",
+    "main.js": "/OMDb_app/static/js/main.ae10698d.js",
+    "index.html": "/OMDb_app/index.html",
+    "main.541034a5.css.map": "/OMDb_app/static/css/main.541034a5.css.map",
+    "main.ae10698d.js.map": "/OMDb_app/static/js/main.ae10698d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.541034a5.css",
+    "static/js/main.ae10698d.js"
+  ]
+}
