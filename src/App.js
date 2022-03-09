@@ -7,8 +7,6 @@ import { getMoviesBySearchTerm } from './Utils.js';
 function App() {
   const [searchInput, setSearchInput] = useState('');
   const [movieList, setMovieList] = useState([]);
-  console.log(`SearchInput: ${searchInput}`);
-
 
   async function getResults() {
     let promise = getMoviesBySearchTerm(searchInput);
@@ -16,6 +14,10 @@ function App() {
       setMovieList(result);
     });
   };
+
+  useEffect(() => {
+    console.log(`SearchInput: ${searchInput}`);
+  }, [searchInput]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -31,7 +33,7 @@ function App() {
         <button onClick={handleSubmit} > Enter </button>
       </form>
       <div>
-        {movieList.map()}
+        {movieList.length}
       </div>
       <div>
         {/* <MovieCard
