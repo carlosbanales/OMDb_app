@@ -4,7 +4,6 @@ export async function getMoviesBySearchTerm(search) {
     let response = await fetch(url);
     let data = await response.json();
     const searchResults = data.Search;
-    console.log("Utils searchResults: "+searchResults);
     return (
       searchResults
     )
