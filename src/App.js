@@ -5,15 +5,15 @@ import SearchBar from './components/SearchBar';
 import MovieList from './components/MovieList';
 
 function App() {
-  const [results, setResults] = useState([]);
+  const [list, setList] = useState([]);
 
-  const getResults = async(searchInput) => {
+  const getSearchResults = async(searchInput) => {
     const promise = getMoviesBySearchTerm(searchInput);
     const movies = await promise.then((result) => {
       return result;
     });
   
-    setResults(prevState => {
+    setList(prevState => {
       return {...prevState, movies:movies}
     })
   };
@@ -22,8 +22,8 @@ function App() {
 	  <div className='App'>
       Enter Search
       <div>
-          <SearchBar getResults={getResults} />
-          <MovieList results={results.movies} />
+          <SearchBar searchResults={getSearchResults} />
+          <MovieList movieResults={list.movies} />
       </div>
     </div>
 

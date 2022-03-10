@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function SearchBar(props) {
-  const { getResults } = props;
+  const { searchResults } = props;
   const [searchInput, setSearchInput] = useState('');
 
   const handleInput = (e) => {
@@ -11,7 +11,7 @@ function SearchBar(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    getResults(searchInput);  
+    searchResults(searchInput);  
   };
 
   return (
