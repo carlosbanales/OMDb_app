@@ -1,47 +1,29 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import MovieCard from './MovieCard.js';
-import MovieDetails from './MovieDetails.js';
-import { getMoviesBySearchTerm } from './Utils.js';
+import { getMoviesBySearchTerm } from './components/Utils';
+import SearchBar from './components/SearchBar';
+import MovieList from './components/MovieList';
 
 function App() {
-  const [searchInput, setSearchInput] = useState('');
-  const [movieList, setMovieList] = useState([]);
+  const [results, setResults] = useState([]);
 
-  async function getResults() {
-    let promise = getMoviesBySearchTerm(searchInput);
-    await promise.then((result) => {
-      setMovieList(result);
+  const getResults = async(searchInput) => {
+    const promise = getMoviesBySearchTerm(searchInput);
+    const movies = await promise.then((result) => {
+      return result;
     });
+  
+    setResults(prevState => {
+      return {...prevState, movies:movies}
+    })
   };
-
-  useEffect(() => {
-    console.log(`SearchInput: ${searchInput}`);
-  }, [searchInput]);
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    getResults();
-
-  }
 
 	return (
 	  <div className='App'>
       Enter Search
-      <form>
-        <input type="text" value={searchInput} onChange={(e) => setSearchInput(e.target.value)}/>
-        <button onClick={handleSubmit} > Enter </button>
-      </form>
       <div>
-        {movieList.length}
-      </div>
-      <div>
-        {/* <MovieCard
-          title = {movieList[0].Title}
-          type = {movieList[0].Type}
-          posterUrl = {movieList[0].Poster}
-        />
-        <MovieDetails /> */}
+          <SearchBar getResults={getResults} />
+          <MovieList results={results.movies} />
       </div>
     </div>
 

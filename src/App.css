@@ -10,7 +10,7 @@
   border: 1px solid #555;
   padding-top: 20px;
   padding-bottom: 20px;
-  text-align: center;
+  width: 150px;
 }
 
 .MovieImage {
@@ -25,6 +25,8 @@
   border: 1px solid red;
   background: pink;
   border-radius: 6px;
+  width: 60px;
+  height: 30px;
 }
 
 .MovieType {
