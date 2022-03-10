@@ -5,13 +5,20 @@ import MovieDetails from './MovieDetails';
 function MovieList({ movieResults }) {
   let data = [];
   if (movieResults) {
-    data = movieResults || [];
+    data = movieResults;
   }
   console.log(data);
   return (
     <div>
-      <MovieCard />
-      <MovieDetails />
+      {data.map((item) => (
+        <MovieCard 
+          key = {item.imdbID}
+          movie = {item}
+          title = {item.Title}
+          type = {item.Type}
+          posterUrl = {item.Poster}
+        />
+      ))}
     </div>
   )
 };
