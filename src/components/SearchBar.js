@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { StyledInput } from './StyledComponents';
+import { Button } from './StyledComponents';
+
 
 function SearchBar(props) {
   const { searchResults } = props;
@@ -17,13 +20,13 @@ function SearchBar(props) {
   return (
     <div>
       <form>
-        <input
+        <StyledInput
           type="text"
           className="input"
           placeholder='Search movies here...'
           value={searchInput}
           onChange={handleInput}/>
-        <button onClick={handleSubmit}> Enter </button>
+        <Button onClick={handleSubmit}> Enter </Button>
       </form>
     </div>
   )

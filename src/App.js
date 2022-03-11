@@ -18,6 +18,10 @@ function App() {
     })
   };
 
+  // useEffect(() => {
+  //   getSearchResults();
+  // }, [getSearchResults()]);
+
 	return (
 	  <div className='App'>
       Enter Search
@@ -31,12 +35,3 @@ function App() {
 };
 
 export default App;
-
-
-
-// promiseVar.then(result => {
-//   console.log(result);
-//   return result;
-// })
-// .catch(err => console.log(err)
-// );
