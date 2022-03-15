@@ -25,12 +25,12 @@ function App() {
 	return (
 	  <div className='App'>
       Enter Search
+      <SearchBar searchResults={getSearchResults} />
+      { getSearchResults ? 
       <div>
-          <SearchBar searchResults={getSearchResults} />
           <MovieList movieResults={list.movies} />
-      </div>
+      </div> : <div></div> }
     </div>
-
   )
 };
 

@@ -25,7 +25,7 @@ function SearchBar(props) {
           className="input"
           placeholder='Search movies here...'
           value={searchInput}
-          onChange={handleInput}/>
+          onChange={handleInput} />
         <Button onClick={handleSubmit}> Enter </Button>
       </form>
     </div>
