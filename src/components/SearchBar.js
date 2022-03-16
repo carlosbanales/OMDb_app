@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { StyledInput } from './StyledComponents';
 import { Button } from './StyledComponents';
 
-
 function SearchBar(props) {
   const { searchResults } = props;
   const [searchInput, setSearchInput] = useState('');
 
   const handleInput = (e) => {
     const input = e.target.value;
+    console.log(input);
     setSearchInput(input);
   };
 
@@ -25,7 +25,7 @@ function SearchBar(props) {
           className="input"
           placeholder='Search movies here...'
           value={searchInput}
-          onChange={handleInput} />
+          onChange={handleInput}/>
         <Button onClick={handleSubmit}> Enter </Button>
       </form>
     </div>

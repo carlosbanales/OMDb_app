@@ -12,21 +12,15 @@ function App() {
     const movies = await promise.then((result) => {
       return result;
     });
-  
-    setList(prevState => {
-      return {...prevState, movies:movies}
-    })
+    
+    setList({movies});
   };
-
-  // useEffect(() => {
-  //   getSearchResults();
-  // }, [getSearchResults()]);
 
 	return (
 	  <div className='App'>
       Enter Search
       <SearchBar searchResults={getSearchResults} />
-      { getSearchResults ? 
+      { list ? 
       <div>
           <MovieList movieResults={list.movies} />
       </div> : <div></div> }

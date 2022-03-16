@@ -13,7 +13,6 @@ function MovieList({ movieResults }) {
   if (movieResults) {
     data = movieResults;
   }
-  console.log(data);
   return (
     <div>
       {data.map((item) => (

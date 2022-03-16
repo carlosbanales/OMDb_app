@@ -4,17 +4,13 @@ export async function getMoviesBySearchTerm(search) {
     let response = await fetch(url);
     let data = await response.json();
     const searchResults = data.Search;
-    return (
+        return (
       searchResults
     )
 };
 
-// async function getMoviesBySea() {
-//   let url = `https://www.omdbapi.com/?apikey=13d7c693&=${search}`;
-//   let response = await fetch(url);
-//   let data = await response.json();
-//   console.log(data)
-// }
+
+
 
 // export const movieData = {
 //     Title: "The Avengers",
