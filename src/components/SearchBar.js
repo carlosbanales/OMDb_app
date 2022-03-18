@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { StyledInput } from './StyledComponents';
 import { Button } from './StyledComponents';
 
-function SearchBar(props) {
-  const { searchResults } = props;
+  function SearchBar({setInput}) {
   const [searchInput, setSearchInput] = useState('');
 
   const handleInput = (e) => {
@@ -14,7 +13,7 @@ function SearchBar(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchResults(searchInput);  
+    setInput(searchInput);  
   };
 
   return (

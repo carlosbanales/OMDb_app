@@ -5,25 +5,38 @@ import SearchBar from './components/SearchBar';
 import MovieList from './components/MovieList';
 
 function App() {
-  const [list, setList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  // const [error, setError] = useState(null);
 
-  const getSearchResults = async(searchInput) => {
-    const promise = getMoviesBySearchTerm(searchInput);
-    const movies = await promise.then((result) => {
+  // why didn't it work to pass setSearchTerm the the search bar prop
+  const getInput = (input) => {
+    setSearchTerm(input);
+  };
+
+  // look into why when I use setMovies(result) won't work
+  useEffect(async() => {
+    const promise = getMoviesBySearchTerm(searchTerm);
+    const data = await promise.then((result) => {
       return result;
     });
-    
-    setList({movies});
-  };
+    // do I need to set movies to an empty array? does it matter in data is undefined?
+    setMovies({data});
+    movies !== [] && setIsLoading(false);
+    console.log(movies);
+  }, [searchTerm]);
 
 	return (
 	  <div className='App'>
       Enter Search
-      <SearchBar searchResults={getSearchResults} />
-      { list ? 
-      <div>
-          <MovieList movieResults={list.movies} />
-      </div> : <div></div> }
+      <SearchBar setInput={getInput} />
+      {
+        isLoading === true ? <div> ...loading </div> :
+        <div>
+          <MovieList movieResults={movies.data} />
+        </div>
+      }
     </div>
   )
 };
