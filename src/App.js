@@ -16,13 +16,16 @@ function App() {
   };
 
   // look into why when I use setMovies(result) won't work
-  useEffect(async() => {
-    const promise = getMoviesBySearchTerm(searchTerm);
-    const data = await promise.then((result) => {
-      return result;
-    });
+  useEffect(() => {
+    const fetchData = async() => {
+      const promise = getMoviesBySearchTerm(searchTerm);
+      const data = await promise.then((result) => {
+        return result;
+      });
+      setMovies({data});
+    }
+    fetchData();
     // do I need to set movies to an empty array? does it matter in data is undefined?
-    setMovies({data});
     movies !== [] && setIsLoading(false);
     console.log(movies);
   }, [searchTerm]);
