@@ -3,10 +3,8 @@ export async function getMoviesBySearchTerm(search) {
     let url = `https://www.omdbapi.com/?apikey=13d7c693&s=${search}`;
     let response = await fetch(url);
     let data = await response.json();
-    const searchResults = data.Search;
-        return (
-      searchResults
-    )
+    console.log(data);
+    return (data);
 };
 
 // export async function getMoviesBySearchTerm(search) {

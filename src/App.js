@@ -22,30 +22,30 @@ function App() {
     // this is here to show on screen that loading is working the way it should
   }, [searchTerm]);
 
-  const getData = async(Term) => {
+  async function getData(sTerm) {
     try {
-      let response = await getMoviesBySearchTerm(Term);
-      console.log(response);
-      setMovies(response);
-      setError();
+      let response = await getMoviesBySearchTerm(sTerm);
+      setMovies(response.Search);
+      // how to stop the requests for the first load?
+      // if (!response.ok)
+      //   throw Error(response.Error);
     } catch (error) {
-      setError('Error')
+      setError(error.message);
+      console.log(error.message);
     }
     setIsLoading(false);
   };
-
-  if (error) return "Error!";
 
 	return (
 	  <div className='App'>
       Enter Search
       <SearchBar setInput={getInput} />
-      {
-        isLoading === true ? <div> ...loading </div> :
+      { error && <div> ...error :( </div>}
+      {/* if isLoading ends up false everytime why dont I get empty list elements ?? */}
+      { isLoading === true ? <div> ...loading </div> :
         <div>
           <MovieList movieResults={movies} />
-        </div>
-      }
+        </div> }
     </div>
   )
 };
