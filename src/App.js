@@ -7,8 +7,8 @@ import MovieList from './components/MovieList';
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [movies, setMovies] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  // const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // why didn't it work to pass setSearchTerm the the search bar prop
   const getInput = (input) => {
@@ -17,18 +17,24 @@ function App() {
 
   // look into why when I use setMovies(result) won't work
   useEffect(() => {
-    const fetchData = async() => {
-      const promise = getMoviesBySearchTerm(searchTerm);
-      const data = await promise.then((result) => {
-        return result;
-      });
-      setMovies({data});
-    }
-    fetchData();
-    // do I need to set movies to an empty array? does it matter in data is undefined?
-    movies !== [] && setIsLoading(false);
-    console.log(movies);
+    setIsLoading(true);
+    getData(searchTerm);
+    // this is here to show on screen that loading is working the way it should
   }, [searchTerm]);
+
+  const getData = async(Term) => {
+    try {
+      let response = await getMoviesBySearchTerm(Term);
+      console.log(response);
+      setMovies(response);
+      setError();
+    } catch (error) {
+      setError('Error')
+    }
+    setIsLoading(false);
+  };
+
+  if (error) return "Error!";
 
 	return (
 	  <div className='App'>
@@ -37,7 +43,7 @@ function App() {
       {
         isLoading === true ? <div> ...loading </div> :
         <div>
-          <MovieList movieResults={movies.data} />
+          <MovieList movieResults={movies} />
         </div>
       }
     </div>
