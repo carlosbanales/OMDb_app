@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { getMoviesBySearchTerm } from './components/Utils';
 import SearchBar from './components/SearchBar';
 import MovieList from './components/MovieList';
-import Modal from './components/Modal';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -32,7 +31,7 @@ function App() {
   // look into why when I use setMovies(result) won't work
   useEffect(() => {
     setIsLoading(true);
-    searchTerm !== '' && getData(searchTerm);
+    searchTerm !== '' ? getData(searchTerm): setMovies([]);
     setIsLoading(false);
   }, [searchTerm]);
 
@@ -44,7 +43,6 @@ function App() {
       {/* if isLoading ends up false everytime why dont I get empty list elements ?? */}
       { isLoading === true ? <div> ...loading </div> :
         <div>
-          <Modal />
           <MovieList movieResults={movies} />
         </div> }
     </div>
