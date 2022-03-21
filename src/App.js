@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getMoviesBySearchTerm } from './components/Utils';
 import SearchBar from './components/SearchBar';
 import MovieList from './components/MovieList';
+import Modal from './components/Modal';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,26 +16,25 @@ function App() {
     setSearchTerm(input);
   };
 
-  // look into why when I use setMovies(result) won't work
-  useEffect(() => {
-    setIsLoading(true);
-    getData(searchTerm);
-    // this is here to show on screen that loading is working the way it should
-  }, [searchTerm]);
-
   async function getData(sTerm) {
     try {
       let response = await getMoviesBySearchTerm(sTerm);
       setMovies(response.Search);
-      // how to stop the requests for the first load?
+      // when uncommented I get an error at intial render? throws an error when the request address
       // if (!response.ok)
       //   throw Error(response.Error);
     } catch (error) {
       setError(error.message);
       console.log(error.message);
     }
-    setIsLoading(false);
   };
+
+  // look into why when I use setMovies(result) won't work
+  useEffect(() => {
+    setIsLoading(true);
+    searchTerm !== '' && getData(searchTerm);
+    setIsLoading(false);
+  }, [searchTerm]);
 
 	return (
 	  <div className='App'>
@@ -44,6 +44,7 @@ function App() {
       {/* if isLoading ends up false everytime why dont I get empty list elements ?? */}
       { isLoading === true ? <div> ...loading </div> :
         <div>
+          <Modal />
           <MovieList movieResults={movies} />
         </div> }
     </div>
