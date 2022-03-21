@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import MovieCard from './MovieCard';
 import Modal from './Modal';
-// add useEffect
-// learn more about keys and map
-// import MovieDetails component
+
 // work on css
 // add pagination
 

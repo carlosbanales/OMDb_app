@@ -28,7 +28,6 @@ function App() {
     }
   };
 
-  // look into why when I use setMovies(result) won't work
   useEffect(() => {
     setIsLoading(true);
     searchTerm !== '' ? getData(searchTerm): setMovies([]);
