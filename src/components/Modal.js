@@ -1,11 +1,12 @@
 import React from 'react';
 import MovieDetails from './MovieDetails';
 
-function Modal({details}) {
+function Modal(props) {
+  const {details, closeModal} = props;
   return (
     <div className="modalBackground">
       <div className="modalContainer">
-        <button> X </button>
+        <button onClick={() => {closeModal(false)}}>X</button>
         <MovieDetails 
           posterUrl={details.PosterUrl}
           title={details.Title}

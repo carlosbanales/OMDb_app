@@ -1,12 +1,12 @@
 import React from 'react';
 
-function MovieCard(props) {
+function MovieCard({ movieData }) {
     return (
-        <div className='MovieCard'>
-            <img className="MovieImage" src={props.posterUrl} />
-            <p className="MovieTitle">{props.title}</p>
+        <div className='MovieCard' onClick={ () => { movieData(true) } }>
+            <img className="MovieImage" src={movieData.posterUrl} />
+            <p className="MovieTitle">{movieData.title}</p>
             <div className="MTContainer">
-                <p className="MovieType">{props.type}</p>
+                <p className="MovieType">{movieData.type}</p>
             </div>
         </div>
     )

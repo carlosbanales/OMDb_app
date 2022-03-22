@@ -13,7 +13,7 @@ import { Button } from './StyledComponents';
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setInput(searchInput);  
+    setInput(searchInput);
   };
 
   return (

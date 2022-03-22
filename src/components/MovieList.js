@@ -15,12 +15,12 @@ function MovieList({ movieResults }) {
     <>
       { openModal && 
           <div>
-            <Modal details={movieResults} />
+            <Modal details={movieResults} closeModal={setOpenModal} />
           </div> }
       <div>
         {data.map((item) => (
           <MovieCard
-            onClick={ () => { setOpenModal(true) } }
+            movieData={setOpenModal}
             key={item.imdbID}
             title={item.Title}
             type={item.Type}
