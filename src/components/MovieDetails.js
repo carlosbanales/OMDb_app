@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-// need to pass movieDetails to module for when the movie card is clicked Day2 assignment
 function MovieDetails(props) {
   return (
     <div className="MovieDetails">

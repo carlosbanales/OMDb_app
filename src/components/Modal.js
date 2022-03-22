@@ -1,14 +1,17 @@
 import React from 'react';
 import MovieDetails from './MovieDetails';
 
-function Modal(props) {
+function Modal({details}) {
   return (
-    <div>
-      <MovieDetails 
-        posterUrl={props.PosterUrl}
-        title={props.Title}
-        rated={props.Rated}
-      />
+    <div className="modalBackground">
+      <div className="modalContainer">
+        <button> X </button>
+        <MovieDetails 
+          posterUrl={details.PosterUrl}
+          title={details.Title}
+          rated={details.Rated}
+        />
+      </div>
     </div>
   );
 }
