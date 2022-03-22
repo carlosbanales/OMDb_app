@@ -20,7 +20,6 @@ function MovieList({ movieResults }) {
       <div>
         {data.map((item) => (
           <MovieCard
-            className="openModalButton"
             onClick={ () => { setOpenModal(true) } }
             key={item.imdbID}
             title={item.Title}
