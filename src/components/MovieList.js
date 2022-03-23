@@ -21,9 +21,9 @@ function MovieList({ movieResults }) {
         <Modal>
           <button onClick={() => {setOpenModal(false)}}>X</button>
           <MovieDetails 
-            posterUrl={data[0].Poster}
-            title={data[0].Title}
-            rated={data[0].Rated}
+            posterUrl={currentMovie.Poster}
+            title={currentMovie.Title}
+            rated={currentMovie.Rated}
           />
         </Modal>
       </>
@@ -31,11 +31,13 @@ function MovieList({ movieResults }) {
       <>
         {data.map((item) => (
           <MovieCard
+            movie={item}
             key={item.imdbID}
             title={item.Title}
             type={item.Type}
             posterUrl={item.Poster}
             setModal={setOpenModal}
+            setItem = {setCurrentMovie}
           />
         ))}
       </>
