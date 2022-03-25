@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/OMDb_app/static/css/main.541034a5.css",
-    "main.js": "/OMDb_app/static/js/main.ae10698d.js",
+    "main.css": "/OMDb_app/static/css/main.078c1712.css",
+    "main.js": "/OMDb_app/static/js/main.6764ebe8.js",
     "index.html": "/OMDb_app/index.html",
-    "main.541034a5.css.map": "/OMDb_app/static/css/main.541034a5.css.map",
-    "main.ae10698d.js.map": "/OMDb_app/static/js/main.ae10698d.js.map"
+    "main.078c1712.css.map": "/OMDb_app/static/css/main.078c1712.css.map",
+    "main.6764ebe8.js.map": "/OMDb_app/static/js/main.6764ebe8.js.map"
   },
   "entrypoints": [
-    "static/css/main.541034a5.css",
-    "static/js/main.ae10698d.js"
+    "static/css/main.078c1712.css",
+    "static/js/main.6764ebe8.js"
   ]
 }
