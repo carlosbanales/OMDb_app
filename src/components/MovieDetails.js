@@ -29,7 +29,7 @@ function MovieDetails({movie, setModal}) {
         <div className="MovieDetails">
           <button onClick={() => {setModal(false)}}>X</button>
           <h2 className="Title">{movieInfo.Title}</h2>
-          <img className="MovieImage" src={movieInfo.Poster} />
+          <img className="MovieImage" alt="Poster" src={movieInfo.Poster} />
           <div className="GreyContainer">
             <p className="Rated">{movieInfo.Rated}</p>
           </div>
