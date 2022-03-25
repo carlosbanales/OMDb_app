@@ -7,6 +7,14 @@ export async function getMoviesBySearchTerm(search) {
     return (data);
 };
 
+export async function getMoviesById(id) {
+    let url = `https://www.omdbapi.com/?apikey=13d7c693&i=${id}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log(data);
+    return (data);
+};
+
 // export async function getMoviesBySearchTerm(search) {
 //   let url = `https://www.omdbapi.com/?apikey=13d7c693&s=${search}`;
 //   let response = await fetch(url);

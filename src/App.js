@@ -17,14 +17,13 @@ function App() {
 
   async function getData(sTerm) {
     try {
-      let response = await getMoviesBySearchTerm(sTerm);
-      setMovies(response.Search);
+      let promise = await getMoviesBySearchTerm(sTerm);
+      setMovies(promise.Search);
       // when uncommented I get an error at intial render? throws an error when the request address
-      // if (!response.ok)
-      //   throw Error(response.Error);
+      // if (!promise.ok)
+      //   throw Error("API: "+promise.Error);
     } catch (error) {
       setError(error.message);
-      console.log(error.message);
     }
   };
 

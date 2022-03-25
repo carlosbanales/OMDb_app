@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MovieCard from './MovieCard';
 import Modal from './Modal';
 import MovieDetails from './MovieDetails';
+import { getMoviesById } from './Utils';
 
 // work on css
 // add pagination
@@ -19,11 +20,9 @@ function MovieList({ movieResults }) {
       { openModal ?
       <>
         <Modal>
-          <button onClick={() => {setOpenModal(false)}}>X</button>
           <MovieDetails 
-            posterUrl={currentMovie.Poster}
-            title={currentMovie.Title}
-            rated={currentMovie.Rated}
+            movie={currentMovie}
+            setModal={setOpenModal}
           />
         </Modal>
       </>
